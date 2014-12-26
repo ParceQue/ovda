@@ -1,8 +1,3 @@
-ovda_profile:
-    resource: "@OVDAProfileBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 ovda_index:
     resource: "@OVDAIndexBundle/Controller/"
     type:     annotation
