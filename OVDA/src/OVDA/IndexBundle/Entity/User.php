@@ -100,6 +100,11 @@ class User {
     private $friendsWithMe;
 
     /**
+     * @ORM\OneToMany(targetEntity="Temoignage", mappedBy="user")
+     */
+    protected $temoignages;
+
+    /**
      * @ORM\ManyToMany(targetEntity="User", inversedBy="friendsWithMe")
      * @ORM\JoinTable(name="friends",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
@@ -695,5 +700,38 @@ class User {
     public function getMyFriends()
     {
         return $this->myFriends;
+    }
+
+    /**
+     * Add temoignages
+     *
+     * @param \OVDA\IndexBundle\Entity\Temoignage $temoignages
+     * @return User
+     */
+    public function addTemoignage(\OVDA\IndexBundle\Entity\Temoignage $temoignages)
+    {
+        $this->temoignages[] = $temoignages;
+
+        return $this;
+    }
+
+    /**
+     * Remove temoignages
+     *
+     * @param \OVDA\IndexBundle\Entity\Temoignage $temoignages
+     */
+    public function removeTemoignage(\OVDA\IndexBundle\Entity\Temoignage $temoignages)
+    {
+        $this->temoignages->removeElement($temoignages);
+    }
+
+    /**
+     * Get temoignages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTemoignages()
+    {
+        return $this->temoignages;
     }
 }

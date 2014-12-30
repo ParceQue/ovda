@@ -3,18 +3,19 @@
  * Created by PhpStorm.
  * User: Utilisateur
  * Date: 2014-12-30
- * Time: 10:00
+ * Time: 12:32
  */
 
 namespace OVDA\IndexBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use OVDA\IndexBundle\Entity\User;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="blog")
+ * @ORM\Table(name="temoignage")
  */
-class Blog {
+class Temoignage {
 
     /**
      * @ORM\Id
@@ -24,19 +25,20 @@ class Blog {
     protected $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="temoignages")
+     * @ORM\JoinColumn(name="user", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
      * @ORM\Column(type="string", length=100)
      */
     protected $title;
 
     /**
-     * @ORM\Column(type="string", length=5000)
+     * @ORM\Column(type="string", length=2000)
      */
     protected $content;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $date;
 
     /**
      * Get id
@@ -52,7 +54,7 @@ class Blog {
      * Set title
      *
      * @param string $title
-     * @return Blog
+     * @return Temoignage
      */
     public function setTitle($title)
     {
@@ -75,7 +77,7 @@ class Blog {
      * Set content
      *
      * @param string $content
-     * @return Blog
+     * @return Temoignage
      */
     public function setContent($content)
     {
@@ -95,25 +97,25 @@ class Blog {
     }
 
     /**
-     * Set date
+     * Set user
      *
-     * @param string $date
-     * @return Blog
+     * @param \OVDA\IndexBundle\Entity\User $user
+     * @return Temoignage
      */
-    public function setDate($date)
+    public function setUser(\OVDA\IndexBundle\Entity\User $user = null)
     {
-        $this->date = $date;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get date
+     * Get user
      *
-     * @return string 
+     * @return \OVDA\IndexBundle\Entity\User 
      */
-    public function getDate()
+    public function getUser()
     {
-        return $this->date;
+        return $this->user;
     }
 }

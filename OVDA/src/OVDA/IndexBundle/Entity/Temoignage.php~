@@ -1,0 +1,42 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Utilisateur
+ * Date: 2014-12-30
+ * Time: 12:32
+ */
+
+namespace OVDA\IndexBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use OVDA\IndexBundle\Entity\User;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="temoignage")
+ */
+class Temoignage {
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="temoignages")
+     * @ORM\JoinColumn(name="user", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $title;
+
+    /**
+     * @ORM\Column(type="string", length=2000)
+     */
+    protected $content;
+}
