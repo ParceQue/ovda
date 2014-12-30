@@ -71,7 +71,7 @@ class User {
      * @ORM\Column(type="boolean", length=100, nullable=true)
      */
     protected $alcool;
-
+ 
     /**
      * @ORM\ManyToMany(targetEntity="Interest", inversedBy="users")
      * @ORM\JoinTable(name="user_interests")

@@ -1,0 +1,40 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Utilisateur
+ * Date: 2014-12-30
+ * Time: 10:00
+ */
+
+namespace OVDA\IndexBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="blog")
+ */
+class Blog {
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $title;
+
+    /**
+     * @ORM\Column(type="string", length=5000)
+     */
+    protected $content;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $date;
+}
