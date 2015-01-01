@@ -13,6 +13,11 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('default/index.html.twig');
+        $temoignages = $this->getDoctrine()->getManager()->getRepository("OVDAIndexBundle:Temoignage")->findAll();
+        return $this->render('default/index.html.twig',
+            array(
+                'temoignages' => $temoignages
+            )
+        );
     }
 }

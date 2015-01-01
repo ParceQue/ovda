@@ -9,6 +9,7 @@
 namespace OVDA\IndexBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use OVDA\IndexBundle\Entity\User;
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 
 /**
  * @ORM\Entity
@@ -25,7 +26,7 @@ class Account {
 
     /**
      * @ORM\OneToOne(targetEntity="User", inversedBy="account")
-     * @ORM\JoinColumn(name="user", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user", referencedColumnName="id", nullable=true)
      */
     protected $user;
 
@@ -40,9 +41,10 @@ class Account {
     protected $password;
 
     /**
-     * @ORM\Column(type="datetime", length=100, nullable=true)
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created", type="datetime")
      */
-    protected $creationDate;
+    protected $create;
 
     /**
      * Get id
@@ -144,5 +146,28 @@ class Account {
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set create
+     *
+     * @param \DateTime $create
+     * @return Account
+     */
+    public function setCreate($create)
+    {
+        $this->create = $create;
+
+        return $this;
+    }
+
+    /**
+     * Get create
+     *
+     * @return \DateTime 
+     */
+    public function getCreate()
+    {
+        return $this->create;
     }
 }

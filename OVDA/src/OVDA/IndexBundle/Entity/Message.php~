@@ -8,6 +8,7 @@
 
 namespace OVDA\IndexBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 
 /**
  * @ORM\Entity
@@ -35,9 +36,10 @@ class Message {
     protected $to;
 
     /**
-     * @ORM\Column(type="datetime", length=100)
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created", type="datetime")
      */
-    protected $time;
+    protected $create;
 
     /**
      * @ORM\Column(type="string", length=5000)
@@ -174,5 +176,28 @@ class Message {
     public function getParentMsg()
     {
         return $this->parentMsg;
+    }
+
+    /**
+     * Set create
+     *
+     * @param \DateTime $create
+     * @return Message
+     */
+    public function setCreate($create)
+    {
+        $this->create = $create;
+
+        return $this;
+    }
+
+    /**
+     * Get create
+     *
+     * @return \DateTime 
+     */
+    public function getCreate()
+    {
+        return $this->create;
     }
 }

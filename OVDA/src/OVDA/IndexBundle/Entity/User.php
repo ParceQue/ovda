@@ -8,6 +8,7 @@
 namespace OVDA\IndexBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 
 /**
  * @ORM\Entity
@@ -21,6 +22,12 @@ class User {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Account", inversedBy="user")
+     * @ORM\JoinColumn(name="account", referencedColumnName="id")
+     */
+    protected $account;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -117,6 +124,17 @@ class User {
      * @ORM\OneToMany(targetEntity="Photo", mappedBy="user")
      */
     protected $photos;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created", type="datetime")
+     */
+    protected $create;
+
+    public function __toString()
+    {
+        return $this->firstName;
+    }
 
 
     /**
@@ -733,5 +751,28 @@ class User {
     public function getTemoignages()
     {
         return $this->temoignages;
+    }
+
+    /**
+     * Set create
+     *
+     * @param \DateTime $create
+     * @return User
+     */
+    public function setCreate($create)
+    {
+        $this->create = $create;
+
+        return $this;
+    }
+
+    /**
+     * Get create
+     *
+     * @return \DateTime 
+     */
+    public function getCreate()
+    {
+        return $this->create;
     }
 }

@@ -37,6 +37,12 @@ class City {
      */
     protected $country;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="city")
+     * @ORM\JoinColumn(name="user", referencedColumnName="id")
+     */
+    protected $user;
+
 
     /**
      * Get id
@@ -115,5 +121,28 @@ class City {
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \OVDA\IndexBundle\Entity\User $user
+     * @return City
+     */
+    public function setUser(\OVDA\IndexBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \OVDA\IndexBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

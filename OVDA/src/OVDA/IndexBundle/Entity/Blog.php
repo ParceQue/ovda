@@ -9,6 +9,7 @@
 namespace OVDA\IndexBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 
 /**
  * @ORM\Entity
@@ -34,9 +35,10 @@ class Blog {
     protected $content;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created", type="datetime")
      */
-    protected $date;
+    protected $create;
 
     /**
      * Get id
@@ -115,5 +117,28 @@ class Blog {
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set create
+     *
+     * @param \DateTime $create
+     * @return Blog
+     */
+    public function setCreate($create)
+    {
+        $this->create = $create;
+
+        return $this;
+    }
+
+    /**
+     * Get create
+     *
+     * @return \DateTime 
+     */
+    public function getCreate()
+    {
+        return $this->create;
     }
 }

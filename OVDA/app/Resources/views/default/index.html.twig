@@ -22,10 +22,13 @@
         <img src="images/Shape2.png" />
     </section>
     <section id="temoignageSection">
-
+        {% for temoignage in temoignages %}
+            {{ temoignage.user.firstName }}
+        {% else %}
+            Aucun témoignage trouvé.
+        {% endfor %}
     </section>
     <section id="demoSection">
-
     </section>
     <section id="blogSection">
 

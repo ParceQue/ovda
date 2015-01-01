@@ -10,6 +10,7 @@ namespace OVDA\IndexBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use OVDA\IndexBundle\Entity\User;
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 
 /**
  * @ORM\Entity
@@ -39,6 +40,12 @@ class Temoignage {
      * @ORM\Column(type="string", length=2000)
      */
     protected $content;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created", type="datetime")
+     */
+    protected $create;
 
     /**
      * Get id
@@ -117,5 +124,28 @@ class Temoignage {
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set create
+     *
+     * @param \DateTime $create
+     * @return Temoignage
+     */
+    public function setCreate($create)
+    {
+        $this->create = $create;
+
+        return $this;
+    }
+
+    /**
+     * Get create
+     *
+     * @return \DateTime 
+     */
+    public function getCreate()
+    {
+        return $this->create;
     }
 }
