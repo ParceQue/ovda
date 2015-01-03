@@ -10,10 +10,13 @@ namespace OVDA\IndexBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use OVDA\IndexBundle\Entity\User;
 use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="account")
+ * @UniqueEntity("email")
  */
 class Account {
 
@@ -31,7 +34,8 @@ class Account {
     protected $user;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, unique=true)
+     * @Assert\Email()
      */
     protected $email;
 

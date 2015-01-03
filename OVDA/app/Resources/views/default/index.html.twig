@@ -6,7 +6,7 @@
             <h1>On Veut des Amis</h1>
             <p>L'endroit pour rencontrez des couples qui partagent les mêmes passions que vous, organiser des rencontres... Découvrir de nouveaux amis</p>
         </div>
-        <a href="#">Commencez maintenant!</a>
+        <a href="#subSection">Commencez maintenant!</a>
     </header>
     <section id="presentationSection">
         <div>
@@ -21,14 +21,45 @@
         <img src="images/Shape1.png" />
         <img src="images/Shape2.png" />
     </section>
-    <section id="temoignageSection">
-        {% for temoignage in temoignages %}
-            {{ temoignage.user.firstName }}
-        {% else %}
-            Aucun témoignage trouvé.
-        {% endfor %}
-    </section>
-    <section id="demoSection">
+    <section id="subSection">
+
+        <div>
+            <h3>Inscrivez-vous dès maintenant!</h3>
+
+            <p> Vous souhaitez faire parti de l'aventure et trouver des gens en qui vous vous reconnaissez... blablablabla</p>
+
+            <h3>Soyez parmis les 300 premiers inscrits et recevez 3 mois d'utilisation gratuit!</h3>
+        </div>
+        <div>
+            <h3>Enregistrez-vous ici!</h3>
+            <form action="{{ path('subCreation') }}" method="post" {{ form_enctype(subForm) }}>
+                {{  form(subForm) }}
+                <button type="submit" id="subAccountSubmit">S'inscrire</button>
+                <p id="msgAfterCreation"></p>
+            </form>
+            <script>
+                $("#subAccountSubmit").click(function() {
+                    var email = $("#ovda_indexbundle_account_email").val();
+                    var password = $("#ovda_indexbundle_account_password").val();
+
+                    if (email && password) {
+                        var data = {
+                            "email": email,
+                            "password": password
+                        }
+                        $.ajax({
+                            type: 'POST',
+                            url: "{{ path('subCreation') }}",
+                            data: data,
+                            cache: false
+                        }).done(function(data) {
+                           $("#msgAfterCreation").text(data.message);
+                           $("#msgAfterCreation").fadeIn();
+                        });
+                    }
+                })
+            </script>
+        </div>
     </section>
     <section id="blogSection">
 

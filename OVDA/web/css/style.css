@@ -1,11 +1,18 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic&subset=latin,latin-ext);
+*,
+*:after,
+*:before {
+  box-sizing: border-box; }
+
+.clearfix {
+  clear: both; }
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Lato', sans-serif;
-  font-size: 2em; }
+  font-size: 1.8em; }
   body section {
-    height: 900px;
     background-attachment: fixed; }
   body #presentationSection {
     color: white;
@@ -13,11 +20,12 @@ body {
     background-color: #e8b968;
     position: relative;
     padding-top: 100px;
+    padding-bottom: 100px;
     padding-left: 100px; }
     body #presentationSection div {
       position: relative;
       z-index: 20;
-      width: 40%;
+      width: 70%;
       font-weight: lighter; }
       body #presentationSection div h2 {
         font-size: 1.6em;
@@ -31,15 +39,89 @@ body {
       position: absolute;
       top: 0;
       left: 0; }
-  body #temoignageSection {
-    height: 800px;
-    background-image: url("../images/Rectangle.png");
+  body #subSection {
+    background-color: #5B6869;
     background-size: 100% 100%;
-    background-repeat: no-repeat; }
-  body #demoSection {
-    background-color: #ffffff;
-    width: 1600px;
-    height: 869px; }
+    background-repeat: no-repeat;
+    color: white;
+    font-weight: lighter;
+    padding-top: 100px;
+    padding-left: 100px;
+    padding-bottom: 100px; }
+    body #subSection > div:first-child {
+      border-right: 1px solid #809091;
+      padding-right: 50px; }
+      body #subSection > div:first-child h3 {
+        margin-bottom: 70px;
+        font-weight: 200; }
+    body #subSection > div:last-child {
+      margin-left: 50px; }
+      body #subSection > div:last-child button {
+        margin-top: 10px;
+        width: 60%;
+        background-color: #7accc8;
+        border-color: #7accc8;
+        opacity: 0.9;
+        height: 35px;
+        font-size: 0.8em;
+        color: white;
+        font-weight: lighter;
+        opacity: 0.9;
+        padding-left: 40px;
+        border-radius: 5px;
+        border-color: #809091;
+        background-color: #738384;
+        margin-left: 50px; }
+      body #subSection > div:last-child #msgAfterCreation {
+        margin-left: 50px;
+        font-size: 0.8em;
+        display: none; }
+    body #subSection > div {
+      display: inline-block;
+      width: 45%;
+      vertical-align: top; }
+    body #subSection form {
+      margin-left: 50px;
+      width: 60%;
+      padding-top: 80px; }
+      body #subSection form ::-webkit-input-placeholder {
+        /* WebKit browsers */
+        color: white;
+        font-weight: lighter; }
+      body #subSection form :-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: white;
+        font-weight: lighter;
+        opacity: 1; }
+      body #subSection form ::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: white;
+        font-weight: lighter;
+        opacity: 1; }
+      body #subSection form :-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        color: white;
+        font-weight: lighter; }
+      body #subSection form input {
+        color: white;
+        font-weight: lighter;
+        opacity: 0.9;
+        height: 30px;
+        width: 100%;
+        padding-left: 40px;
+        border-radius: 5px;
+        border-color: #809091;
+        background-color: #738384; }
+      body #subSection form div {
+        padding: 0;
+        width: 100%; }
+    body #subSection p {
+      margin: 0 0 100px 0;
+      padding: 0; }
+    body #subSection h3 {
+      margin: 0;
+      padding: 0;
+      font-weight: 200; }
   body #blogSection {
     background-color: #f6f6f4; }
   body #contactSection {
@@ -58,10 +140,10 @@ header {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 900px;
   color: white;
   text-align: center;
-  padding-top: 300px; }
+  padding-top: 200px;
+  padding-bottom: 60px; }
   header div {
     width: 50%;
     margin-left: auto;
@@ -72,7 +154,7 @@ header {
       font-weight: lighter; }
     header div p {
       font-style: italic;
-      margin-bottom: 550px;
+      margin-bottom: 400px;
       font-size: 0.8em;
       font-weight: lighter;
       text-shadow: inset; }
@@ -83,7 +165,7 @@ header {
     display: inline-block;
     border-radius: 2px;
     padding: 10px 40px 10px 40px;
-    border: 1px solid 7accc8;
+    border: 1px solid #7accc8;
     background: #7accc8;
     font-size: 1.2em;
     top: 0;

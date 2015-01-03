@@ -2,3 +2,10 @@ ovda_index:
     resource: "@OVDAIndexBundle/Controller/"
     type:     annotation
     prefix:   /
+
+subCreation:
+    pattern: /sub/account/creation
+    defaults:
+      {_controller: OVDAIndexBundle:Account:subAccountCreation}
+    requirements:
+        _method: POST
