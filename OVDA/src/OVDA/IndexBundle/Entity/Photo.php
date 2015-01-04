@@ -33,6 +33,11 @@ class Photo {
      */
     protected $path;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $isMain;
+
 
 
     /**
@@ -89,5 +94,28 @@ class Photo {
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set isMain
+     *
+     * @param boolean $isMain
+     * @return Photo
+     */
+    public function setIsMain($isMain)
+    {
+        $this->isMain = $isMain;
+
+        return $this;
+    }
+
+    /**
+     * Get isMain
+     *
+     * @return boolean 
+     */
+    public function getIsMain()
+    {
+        return $this->isMain;
     }
 }

@@ -46,13 +46,18 @@
                         var data = {
                             "email": email,
                             "password": password
-                        }
+                        };
                         $.ajax({
                             type: 'POST',
                             url: "{{ path('subCreation') }}",
                             data: data,
                             cache: false
                         }).done(function(data) {
+                            if (data.success) {
+                                $("#msgAfterCreation").css('color', "lightblue");
+                            } else {
+                                $("#msgAfterCreation").css('color', "red");
+                            }
                            $("#msgAfterCreation").text(data.message);
                            $("#msgAfterCreation").fadeIn();
                         });

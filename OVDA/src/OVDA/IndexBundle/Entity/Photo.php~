@@ -33,6 +33,11 @@ class Photo {
      */
     protected $path;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $isMain;
+
 
 
     /**

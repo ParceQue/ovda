@@ -15,6 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\JsonResponse;use Symfony\Component\HttpFoundation\Response;
 
 class AccountController extends Controller {
@@ -48,11 +49,14 @@ class AccountController extends Controller {
             }
         }
 
-       $response = new JsonResponse();
-       $response->setData(array(
+        $response = new JsonResponse();
+        if ($email) {
+            $response->headers->setCookie(new Cookie('email', $email));
+        }
+        $response->setData(array(
            'success' => $success,
            'message' => $message
-       ));
+        ));
 
         return $response;
     }

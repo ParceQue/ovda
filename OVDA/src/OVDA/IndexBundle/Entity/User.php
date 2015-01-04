@@ -125,6 +125,13 @@ class User {
      */
     protected $photos;
 
+
+    /**
+     * @ORM\OneToOne(targetEntity="UserRegistration", inversedBy="user")
+     * @ORM\JoinColumn(name="userRegistration", referencedColumnName="id")
+     */
+    protected $registration;
+
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created", type="datetime")
@@ -774,5 +781,28 @@ class User {
     public function getCreate()
     {
         return $this->create;
+    }
+
+    /**
+     * Set registration
+     *
+     * @param \OVDA\IndexBundle\Entity\UserRegistration $registration
+     * @return User
+     */
+    public function setRegistration(\OVDA\IndexBundle\Entity\UserRegistration $registration = null)
+    {
+        $this->registration = $registration;
+
+        return $this;
+    }
+
+    /**
+     * Get registration
+     *
+     * @return \OVDA\IndexBundle\Entity\UserRegistration 
+     */
+    public function getRegistration()
+    {
+        return $this->registration;
     }
 }
